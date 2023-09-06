@@ -71,3 +71,76 @@ const handleQuestionClick = async (event) => {
 };
 
 questionButton.addEventListener("click", handleQuestionClick);
+
+// toggleDarkMode a été fait par chat gpt
+
+const toggleDarkMode = () => {
+  // Get a reference to the body element
+  const body = document.body;
+
+  if (body.classList.contains('dark-mode')) {
+    // If the body element already has the 'dark-mode' class (indicating it's in dark mode),
+    // then switch to light mode by removing the 'dark-mode' class
+    body.classList.remove('dark-mode');
+
+    // Store the user's preference for light mode in localStorage
+    localStorage.setItem('dark-mode', 'light');
+  } else {
+    // If the body element does not have the 'dark-mode' class (indicating it's in light mode),
+    // then switch to dark mode by adding the 'dark-mode' class
+    body.classList.add('dark-mode');
+
+    // Store the user's preference for dark mode in localStorage
+    localStorage.setItem('dark-mode', 'dark');
+  }
+};
+
+// Get a reference to the dark mode button by its ID
+const darkModeButton = document.getElementById('dark-mode');
+
+// Add a click event listener to the dark mode button
+darkModeButton.addEventListener('click', toggleDarkMode);
+
+// Check the user's dark mode preference stored in localStorage
+const currentMode = localStorage.getItem('dark-mode');
+
+// If the user has a preference for dark mode ('dark' stored in localStorage), apply it by adding the 'dark-mode' class to the body element
+if (currentMode === 'dark') {
+  document.body.classList.add('dark-mode');
+}
+
+/*
+const toggleRainbowMode = () => {
+  // Get a reference to the body element
+  const body = document.body;
+
+  if (body.classList.contains('dark-mode')) {
+    // If the body element already has the 'dark-mode' class (indicating it's in dark mode),
+    // then switch to light mode by removing the 'dark-mode' class
+    body.classList.remove('dark-mode');
+
+    // Store the user's preference for light mode in localStorage
+    localStorage.setItem('rainbow-mode', 'light');
+  } else {
+    // If the body element does not have the 'dark-mode' class (indicating it's in light mode),
+    // then switch to dark mode by adding the 'dark-mode' class
+    body.classList.add('rainbow-mode');
+
+    // Store the user's preference for dark mode in localStorage
+    localStorage.setItem('rainbow-mode', 'rainbow');
+  }
+};
+
+// Get a reference to the dark mode button by its ID
+const rainbowModeButton = document.getElementById('rainbow-mode');
+
+// Add a click event listener to the dark mode button
+darkModeButton.addEventListener('click', toggleRainbowMode);
+
+// Check the user's dark mode preference stored in localStorage
+const currentMode = localStorage.getItem('rainbow-mode');
+
+// If the user has a preference for dark mode ('dark' stored in localStorage), apply it by adding the 'dark-mode' class to the body element
+if (currentMode === 'rainbow') {
+  document.body.classList.add('rainbow-mode');
+} */

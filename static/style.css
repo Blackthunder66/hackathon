@@ -1,3 +1,4 @@
+/* Light Mode */
 :root {
   --body-background-color: #f5f6f8;
   --main-background-color: #ffffff;
@@ -6,7 +7,21 @@
   --border-color: #cccccc;
   --secondary-color: #fff6d3;
   --loader-bullet-size: 6px;
+  --button-color: main-background-color;
 }
+
+/* Dark Mode */
+body.dark-mode {
+  --body-background-color: #4500a0;
+  --main-background-color: #000000;
+  --main-color: #ebebeb;
+  --max-body-width: 700px;
+  --border-color: #0be93b;
+  --secondary-color: #490add;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+}
+
 
 * {
   box-sizing: border-box;
@@ -82,7 +97,8 @@ body {
   border: 1px solid var(--border-color);
   padding: 5px;
   border-radius: 5px;
-  background-color: var(--main-background-color);
+  background-color: var(--button-color);
+  color: var(--main-color)
 }
 
 .button:hover,
@@ -102,6 +118,7 @@ body {
   width: 80px;
   height: var(--loader-bullet-size);
 }
+
 .loader div {
   position: absolute;
   top: 0;
@@ -111,42 +128,52 @@ body {
   background-color: var(--main-color);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
 .loader div:nth-child(1) {
   left: calc(var(--loader-bullet-size) * 0.5);
   animation: loader1 0.6s infinite;
 }
+
 .loader div:nth-child(2) {
   left: calc(var(--loader-bullet-size) * 0.5);
   animation: loader2 0.6s infinite;
 }
+
 .loader div:nth-child(3) {
   left: calc(var(--loader-bullet-size) * 2.5);
   animation: loader2 0.6s infinite;
 }
+
 .loader div:nth-child(4) {
   left: calc(var(--loader-bullet-size) * 4);
   animation: loader3 0.6s infinite;
 }
+
 @keyframes loader1 {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 @keyframes loader3 {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(0);
   }
 }
+
 @keyframes loader2 {
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(calc(var(--loader-bullet-size) * 2), 0);
   }
