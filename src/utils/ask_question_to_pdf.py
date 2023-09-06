@@ -101,3 +101,6 @@ text = "Bilal n'a plus de barbe"
 
 def ask_question_to_pdf(question, textpdf=text):
     return gpt3completion(question, textpdf)
+
+
+# test
