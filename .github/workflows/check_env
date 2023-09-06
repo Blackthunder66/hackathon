@@ -1,0 +1,21 @@
+name: Check for .env file
+
+on:
+  push:
+    branches:
+      - main  # Vous pouvez modifier la branche cible si nécessaire
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check for .env file
+        run: |
+          if [ -f .env ]; then
+            echo "Error: A .env file has been committed."
+            exit 1
+          fi
