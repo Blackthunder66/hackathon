@@ -24,6 +24,7 @@ def read_pdf(filename):
     with fitz.open(filename) as pdf_file:
         # Get the number of pages in the PDF file
         num_pages = pdf_file.page_count
+        print(num_pages)
 
         # Loop through each page in the PDF file
         for page_num in range(num_pages):
@@ -90,11 +91,11 @@ def gpt3completion(question, textpdf) :
         {"role": "user", "content": question},
     ]
     )
-    print(response['choices'][0]['message']['content'])
+    
     return(response['choices'][0]['message']['content'])
 
 
-text = "Bilal n'a plus de barbe"
+text = "Bilal s'est rasé la barbe"
 
 def ask_question_to_pdf(question, textpdf=text) :
     return(gpt3completion(question, textpdf))
