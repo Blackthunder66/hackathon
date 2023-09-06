@@ -1,6 +1,5 @@
 from io import StringIO
 import os
-from urllib import response
 import fitz
 import openai
 from dotenv import load_dotenv
@@ -93,7 +92,7 @@ def gpt3completion(question, textpdf):
             {"role": "user", "content": question},
         ],
     )
-
+    print(response["choices"][0]["message"]["content"])
     return response["choices"][0]["message"]["content"]
 
 
