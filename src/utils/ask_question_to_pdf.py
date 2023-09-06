@@ -1,6 +1,5 @@
 from io import StringIO
 import os
-from urllib import response
 import fitz
 import openai
 from dotenv import load_dotenv
