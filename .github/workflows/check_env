@@ -1,9 +1,9 @@
-name: Check for .env file
+name: Check_env_file
 
 on:
   push:
     branches:
-      - main  # Vous pouvez modifier la branche cible si nécessaire
+      - TP3  # Vous pouvez modifier la branche cible si nécessaire
 
 jobs:
   check:
