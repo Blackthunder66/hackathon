@@ -13,6 +13,7 @@ def open_file(filepath):
     with open(filepath, "r", encoding="utf-8") as infile:
         return infile.read()
 
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.organization = os.getenv("OPENAI_ORGANIZATION")
 
@@ -82,19 +83,21 @@ filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
-def gpt3completion(question, textpdf) :
+
+def gpt3completion(question, textpdf):
     response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant." + textpdf}, 
-        {"role": "user", "content": question},
-    ]
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant." + textpdf},
+            {"role": "user", "content": question},
+        ],
     )
-    print(response['choices'][0]['message']['content'])
-    return(response['choices'][0]['message']['content'])
+    print(response["choices"][0]["message"]["content"])
+    return response["choices"][0]["message"]["content"]
 
 
 text = "Bilal n'a plus de barbe"
 
-def ask_question_to_pdf(question, textpdf=text) :
-    return(gpt3completion(question, textpdf))
+
+def ask_question_to_pdf(question, textpdf=text):
+    return gpt3completion(question, textpdf)
