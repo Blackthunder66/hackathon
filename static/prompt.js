@@ -74,7 +74,7 @@ questionButton.addEventListener("click", handleQuestionClick);
 
 // toggleDarkMode a été fait par chat gpt
 
-const toggleDarkMode = () => {
+const toggleMode = () => {
   // Get a reference to the body element
   const body = document.body;
 
@@ -82,32 +82,75 @@ const toggleDarkMode = () => {
     // If the body element already has the 'dark-mode' class (indicating it's in dark mode),
     // then switch to light mode by removing the 'dark-mode' class
     body.classList.remove('dark-mode');
+    body.classList.add('rainbow-mode');
 
     // Store the user's preference for light mode in localStorage
-    localStorage.setItem('dark-mode', 'light');
-  } else {
-    // If the body element does not have the 'dark-mode' class (indicating it's in light mode),
-    // then switch to dark mode by adding the 'dark-mode' class
+    localStorage.setItem('mode', 'rainbow');
+  }
+  else if (body.classList.contains('rainbow-mode')) {
+
+    body.classList.remove('rainbow-mode');
+    body.classList.add('french-mode');
+
+    localStorage.setItem('mode', 'french');
+
+  }
+  else if (body.classList.contains('french-mode')) {
+
+    body.classList.remove('french-mode');
+
+    localStorage.setItem('mode', 'light');
+
+  }
+
+  else {
+
     body.classList.add('dark-mode');
 
     // Store the user's preference for dark mode in localStorage
-    localStorage.setItem('dark-mode', 'dark');
+    localStorage.setItem('mode', 'dark');
   }
 };
 
-// Get a reference to the dark mode button by its ID
-const darkModeButton = document.getElementById('dark-mode');
+// Get a reference to the mode button by its ID
+const modeButton = document.getElementById('mode');
 
-// Add a click event listener to the dark mode button
-darkModeButton.addEventListener('click', toggleDarkMode);
+// Add a click event listener to the mode button
+modeButton.addEventListener('click', toggleMode);
 
-// Check the user's dark mode preference stored in localStorage
-const currentMode = localStorage.getItem('dark-mode');
+// Check the user's mode preference stored in localStorage
+const currentMode = localStorage.getItem('mode');
 
 // If the user has a preference for dark mode ('dark' stored in localStorage), apply it by adding the 'dark-mode' class to the body element
 if (currentMode === 'dark') {
   document.body.classList.add('dark-mode');
 }
+else if (currentMode == "rainbow") {
+  document.body.classList.add("rainbow-mode");
+}
+else if (currentMode == "french") {
+  document.body.classList.add("french-mode");
+}
+
+/*
+document.addEventListener('DOMContentLoaded', function () {
+  const optionsButton = document.getElementById('options-button');
+  const optionsList = document.querySelector('.options-list');
+  const optionItems = document.querySelectorAll('.option');
+
+  // Show options when clicking the "Hover Me" button
+  optionsButton.addEventListener('click', function () {
+    optionsList.classList.toggle('show-options');
+  });
+
+  // Handle click events for each option
+  optionItems.forEach((option) => {
+    option.addEventListener('click', function () {
+      alert(`Clicked: ${option.textContent}`);
+    });
+  });
+});
+*/
 
 /*
 const toggleRainbowMode = () => {
