@@ -92,7 +92,7 @@ const handlefile = async (event, file) => {
     method: "PUT",
     body: data,
   });
-  console.log(reponse)
+  /*console.log(response)*/
 };
 
 

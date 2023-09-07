@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 from nltk.tokenize import sent_tokenize
 
 load_dotenv()
-chemin = "C:/Users/tangu/hackathon/src/utils/fichier_dd.pdf"
+chemin_t = "C:/Users/tangu/hackathon/src/utils/fichier_dd.pdf"
+chemin = "C:/Users/Broni/Downloads/PDF"
 
 
 def open_file(filepath):
