@@ -71,3 +71,40 @@ const handleQuestionClick = async (event) => {
 };
 
 questionButton.addEventListener("click", handleQuestionClick);
+
+
+/* Bouton drag and drop */
+
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+
+dropZone.addEventListener('click', () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    // Vous pouvez ajouter ici la logique pour traiter le fichier
+    alert(`Vous avez sélectionné le fichier : ${file.name}`);
+  }
+});
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.style.borderColor = '#333';
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.style.borderColor = '#ccc';
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.style.borderColor = '#ccc';
+  const file = e.dataTransfer.files[0];
+  if (file) {
+    // Vous pouvez ajouter ici la logique pour traiter le fichier
+    alert(`Vous avez glissé et déposé le fichier : ${file.name}`);
+  }
+});

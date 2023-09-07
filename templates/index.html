@@ -32,6 +32,19 @@
       </button>
     </form>
 
+    <div class="container mt-5">
+      <h1 class="text-center">Glissez et déposez un fichier</h1>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <!-- Zone de glisser-déposer -->
+          <div class="drop-zone" id="drop-zone">
+            <p>Glissez et déposez un fichier ici ou cliquez pour sélectionner un fichier.</p>
+            <input type="file" id="file-input" style="display: none;">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="{{ url_for('static', filename='prompt.js') }}"></script>
   </main>
 </body>
@@ -56,57 +69,7 @@
   </style>
 </head>
 
-<body>
-  <div class="container mt-5">
-    <h1 class="text-center">Glissez et déposez un fichier</h1>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <!-- Zone de glisser-déposer -->
-        <div class="drop-zone" id="drop-zone">
-          <p>Glissez et déposez un fichier ici ou cliquez pour sélectionner un fichier.</p>
-          <input type="file" id="file-input" style="display: none;">
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <script>
-    // JavaScript pour gérer le glisser-déposer
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('file-input');
-
-    dropZone.addEventListener('click', () => {
-      fileInput.click();
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        // Vous pouvez ajouter ici la logique pour traiter le fichier
-        alert(`Vous avez sélectionné le fichier : ${file.name}`);
-      }
-    });
-
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropZone.style.borderColor = '#333';
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.style.borderColor = '#ccc';
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.style.borderColor = '#ccc';
-      const file = e.dataTransfer.files[0];
-      if (file) {
-        // Vous pouvez ajouter ici la logique pour traiter le fichier
-        alert(`Vous avez glissé et déposé le fichier : ${file.name}`);
-      }
-    });
-  </script>
-</body>
 
 </html>
 
