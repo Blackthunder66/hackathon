@@ -1,46 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>Mon A.I.de mémoire</title>
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-  </head>
+<head>
+  <title>Mon A.I.de mémoire</title>
 
-  <body>
-    <main class="main-container">
-      <header class="header">
-        <h1 class="header-title">Mon A.I.de mémoire</h1>
-      </header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
 
-      <section id="messages-container" class="messages-container">
-        <div class="message message-ai">
-          Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
-          le cours et je te répondrai.
+<body>
+  <main class="main-container">
+    <header class="header">
+      <h1 class="header-title">Mon A.I.de mémoire</h1>
+    </header>
+
+    <section id="messages-container" class="messages-container">
+      <div class="message message-ai">
+        Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
+        le cours et je te répondrai.
+      </div>
+    </section>
+
+    <form id="prompt-form" class="prompt-container">
+      <label for="prompt" class="prompt-label">Message</label>
+
+      <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="off" />
+
+      <button type="submit" class="button" id="submit-button">Envoyer</button>
+
+      <button type="button" class="button" id="question-button">
+        Pose-moi une question !
+      </button>
+    </form>
+
+    <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+  </main>
+</body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface de Téléchargement de Fichiers</title>
+  <!-- Inclure Bootstrap (CDN) pour une mise en page plus facile -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Style pour la zone de glisser-déposer */
+    .drop-zone {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Glissez et déposez un fichier</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Zone de glisser-déposer -->
+        <div class="drop-zone" id="drop-zone">
+          <p>Glissez et déposez un fichier ici ou cliquez pour sélectionner un fichier.</p>
+          <input type="file" id="file-input" style="display: none;">
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
 
-      <form id="prompt-form" class="prompt-container">
-        <label for="prompt" class="prompt-label">Message</label>
+  <script>
+    // JavaScript pour gérer le glisser-déposer
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
 
-        <input
-          type="text"
-          id="prompt"
-          name="prompt"
-          class="prompt-input"
-          autocomplete="off"
-        />
+    dropZone.addEventListener('click', () => {
+      fileInput.click();
+    });
 
-        <button type="submit" class="button" id="submit-button">Envoyer</button>
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        // Vous pouvez ajouter ici la logique pour traiter le fichier
+        alert(`Vous avez sélectionné le fichier : ${file.name}`);
+      }
+    });
 
-        <button type="button" class="button" id="question-button">
-          Pose-moi une question !
-        </button>
-      </form>
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.style.borderColor = '#333';
+    });
 
-      <script src="{{ url_for('static', filename='prompt.js') }}"></script>
-    </main>
-  </body>
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.style.borderColor = '#ccc';
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.style.borderColor = '#ccc';
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        // Vous pouvez ajouter ici la logique pour traiter le fichier
+        alert(`Vous avez glissé et déposé le fichier : ${file.name}`);
+      }
+    });
+  </script>
+</body>
+
+</html>
+
 </html>
