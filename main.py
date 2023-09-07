@@ -9,6 +9,8 @@ from src.utils.ask_question_to_pdf import (
     document,
     chunks,
     text,
+    change_doc,
+    download_file,
 )
 
 app = Flask(__name__)
@@ -39,3 +41,12 @@ def answer():
     answer = request.form["prompt"]
     response = ask_question_to_pdf(answer + "est-ce vrai ou faux?", textpdf=document)
     return {"answer": response}
+
+
+@app.route("/file", methods=["POST"])
+def file():
+    # Contenu du fichier que vous avez déjà en mémoire
+    contenu_fichier = request.form["drop"]
+    download_file(contenu_fichier)
+    change_doc(contenu_fichier)
+    return None

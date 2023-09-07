@@ -35,15 +35,20 @@
     <div class="container mt-5">
       <h1 class="text-center">Glissez et déposez un fichier</h1>
       <div class="row justify-content-center">
-        <div class="col-md-6">
+
+        <form id="upload-form" class="col-md-6">
           <!-- Zone de glisser-déposer -->
           <div class="drop-zone" id="drop-zone">
             <p>Glissez et déposez un fichier ici ou cliquez pour sélectionner un fichier.</p>
-            <input type="file" id="file-input" style="display: none;">
+            <input type="file" id="file-input" style="display: none;" />
+            <!-- Ajoutez ceci à l'intérieur de la div "drop-zone" pour afficher le nom du fichier -->
+            <div id="file-name"></div>
+
           </div>
-        </div>
+        </form>
       </div>
     </div>
+
 
     <script src="{{ url_for('static', filename='prompt.js') }}"></script>
   </main>

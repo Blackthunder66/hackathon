@@ -3,6 +3,7 @@ const submitButton = document.getElementById("submit-button");
 const questionButton = document.getElementById("question-button");
 const messagesContainer = document.getElementById("messages-container");
 
+
 const appendHumanMessage = (message) => {
   const humanMessageElement = document.createElement("div");
   humanMessageElement.classList.add("message", "message-human");
@@ -73,22 +74,46 @@ const handleQuestionClick = async (event) => {
 questionButton.addEventListener("click", handleQuestionClick);
 
 
-/* Bouton drag and drop */
 
+/* Bouton drag and drop */
+const fileNameDisplay = document.getElementById('file-name');
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
+
+
+const handlefile = async (event, file) => {
+  event.preventDefault();
+  // Parse form data in a structured object
+  const data = new FormData();
+  data.append("drop", file);
+  let url = "/drop";
+
+  const response = await fetch(url, {
+    method: "PUT",
+    body: data,
+  });
+  console.log(reponse)
+};
+
 
 dropZone.addEventListener('click', () => {
   fileInput.click();
 });
 
+
 fileInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (file) {
     // Vous pouvez ajouter ici la logique pour traiter le fichier
-    alert(`Vous avez sélectionné le fichier : ${file.name}`);
+    fileNameDisplay.textContent = `Fichier sélectionné : ${file.name}`;
+    // Ajoutez ici la logique pour télécharger le fichier
+    // appeler la fonction handle file
+    handlefile(e, file);
   }
+
 });
+
+
 
 dropZone.addEventListener('dragover', (e) => {
   e.preventDefault();
@@ -99,12 +124,21 @@ dropZone.addEventListener('dragleave', () => {
   dropZone.style.borderColor = '#ccc';
 });
 
+
 dropZone.addEventListener('drop', (e) => {
   e.preventDefault();
   dropZone.style.borderColor = '#ccc';
   const file = e.dataTransfer.files[0];
   if (file) {
+
     // Vous pouvez ajouter ici la logique pour traiter le fichier
-    alert(`Vous avez glissé et déposé le fichier : ${file.name}`);
+    fileNameDisplay.textContent = `Fichier glissé et déposé : ${file.name}`;
+
+    // appeler la fonction handle file
+    handlefile(e, file);
   }
+
 });
+
+
+
