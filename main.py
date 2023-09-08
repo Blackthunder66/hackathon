@@ -21,6 +21,16 @@ def hello(name=None):
     return render_template("index.html", name=name)
 
 
+@app.route("/drop", methods=["PUT"])
+def file():
+    # Contenu du fichier que vous avez déjà en mémoire
+    contenu_fichier = request.files["drop"]
+    print(contenu_fichier)
+    download_file(contenu_fichier)
+    change_doc(contenu_fichier)
+    return None
+
+
 @app.route("/question", methods=["GET"])
 def ask_question():
     question = ask_question_to_pdf(
@@ -41,12 +51,3 @@ def answer():
     answer = request.form["prompt"]
     response = ask_question_to_pdf(answer + "est-ce vrai ou faux?", textpdf=document)
     return {"answer": response}
-
-
-@app.route("/drop", methods=["PUT"])
-def file():
-    # Contenu du fichier que vous avez déjà en mémoire
-    contenu_fichier = request.form["drop"]
-    download_file(contenu_fichier)
-    change_doc(contenu_fichier)
-    return None

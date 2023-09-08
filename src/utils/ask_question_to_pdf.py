@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 from nltk.tokenize import sent_tokenize
 
 load_dotenv()
-chemin_t = "C:/Users/tangu/hackathon/src/utils/fichier_dd.pdf"
-chemin = "C:/Users/Broni/Downloads/PDF"
+chemin = "C:/Users/tangu/hackathon/src/utils/fichier_dd.txt"
+chemin_b = "C:/Users/Broni/Downloads/PDF"
 
 
 def open_file(filepath):
@@ -108,7 +108,7 @@ def download_file(contenu_fichier):
 
 
 def change_doc(doc_2):
-    filename_2 = os.path.join(os.path.dirname(__file__), "fichier_dd.pdf")
+    filename_2 = os.path.join(os.path.dirname(__file__), "fichier_dd.txt")
     global document
     document = read_pdf(filename_2)
     return None

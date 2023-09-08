@@ -88,11 +88,13 @@ const handlefile = async (event, file) => {
   data.append("drop", file);
   let url = "/drop";
 
+  console.log(file)
+
   const response = await fetch(url, {
     method: "PUT",
     body: data,
   });
-  /*console.log(response)*/
+
 };
 
 
