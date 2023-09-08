@@ -85,34 +85,10 @@ filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
-"""
-def download_file(contenu_fichier):
-    # Chemin de destination où vous souhaitez enregistrer le fichier
-    chemin_destination = chemin
-
-    # Écrire le contenu dans le fichier de destination
-    try:
-        with open(chemin_destination, "wb") as fichier_destination:
-            fichier_destination.write(contenu_fichier)
-        print(f"Fichier enregistré avec succès dans {chemin_destination}")
-    except FileNotFoundError:
-        print("Le chemin de destination spécifié n'a pas été trouvé.")
-    except IsADirectoryError:
-        print(
-            f"{chemin_destination} est un dossier. Spécifiez un nom de fichier pour la destination."
-        )
-    except Exception as e:
-        print(f"Une erreur s'est produite : {str(e)}")
-
-    return None
-"""
-
 
 def change_doc(doc_2, name):
     filename_2 = os.path.join(os.path.dirname(__file__), name)
-    global document
-    document = read_pdf(filename_2)
-    return None
+    return read_pdf(filename_2)
 
 
 def gpt3completion(question, textpdf):

@@ -32,8 +32,12 @@ def file():
     contenu_fichier.save(
         os.path.join(app.config["UPLOAD_FOLDER"], contenu_fichier.filename)
     )
-    # download_file(contenu_fichier)
-    change_doc(contenu_fichier, name=contenu_fichier.filename)
+
+    global document
+    app.logger.info(document)
+    document = change_doc(contenu_fichier, name=contenu_fichier.filename)
+    app.logger.info("**********************APRES CHANGEMENT***********************")
+    app.logger.info(document)
     return None
 
 
@@ -48,7 +52,7 @@ def ask_question():
 @app.route("/prompt", methods=["POST"])
 def prompt():
     question = request.form["prompt"]
-    response = ask_question_to_pdf(question)
+    response = ask_question_to_pdf(question, textpdf=document)
     return {"answer": response}
 
 
