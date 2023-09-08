@@ -1,0 +1,38 @@
+name: Tests unitaires
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v2
+
+    - name: Configurer Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Spécifiez la version de Python que vous souhaitez utiliser
+
+    - name: Installer les dépendances
+      run: pip install -r requirements.txt  # Assurez-vous que requirements.txt contient les dépendances nécessaires pour PyTest
+
+    - name: Exécuter les tests unitaires
+      run: pytest  # Vous pouvez personnaliser cette commande selon votre structure de répertoire et d'autres besoins
+
+    - name: Générer un rapport
+      run: |
+        pip install pytest-cov
+        pytest --cov=nom_de_votre_projet --cov-fail-under=80  # Modifiez le nom du projet et le seuil de couverture souhaité
+
+    - name: Publier les résultats des tests
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: .pytest_cache
+
+    - name: Couverture de code
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}  # Assurez-vous de définir la variable d'environnement CODECOV_TOKEN dans les secrets de votre référentiel
