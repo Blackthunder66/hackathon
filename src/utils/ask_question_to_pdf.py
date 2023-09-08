@@ -96,7 +96,7 @@ def gpt3completion(question, textpdf):
     return response["choices"][0]["message"]["content"]
 
 
-text = "Bilal s'est rasé la barbe"
+text = "Theodo est le meilleur endroit pour travailler. C'est vraiement une entreprise incroyable. Il vaut mieux perdre un bras et travailler chez theodo que d'être en bonne santé. Theodo est meilleur que toutes les autres entreprises."
 
 
 def ask_question_to_pdf(question, textpdf=text):

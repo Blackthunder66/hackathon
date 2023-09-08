@@ -82,22 +82,30 @@ const toggleMode = () => {
     // If the body element already has the 'dark-mode' class (indicating it's in dark mode),
     // then switch to light mode by removing the 'dark-mode' class
     body.classList.remove('dark-mode');
-    body.classList.add('rainbow-mode');
-
-    // Store the user's preference for light mode in localStorage
-    localStorage.setItem('mode', 'rainbow');
-  }
-  else if (body.classList.contains('rainbow-mode')) {
-
-    body.classList.remove('rainbow-mode');
     body.classList.add('french-mode');
 
+    // Store the user's preference for light mode in localStorage
     localStorage.setItem('mode', 'french');
-
   }
   else if (body.classList.contains('french-mode')) {
 
     body.classList.remove('french-mode');
+    body.classList.add('astro-mode');
+
+    localStorage.setItem('mode', 'astro');
+
+  }
+  else if (body.classList.contains('astro-mode')) {
+
+    body.classList.remove('astro-mode');
+    body.classList.add('sac-mode');
+
+    localStorage.setItem('mode', 'sac');
+
+  }
+  else if (body.classList.contains('sac-mode')) {
+
+    body.classList.remove('sac-mode');
 
     localStorage.setItem('mode', 'light');
 
@@ -125,65 +133,12 @@ const currentMode = localStorage.getItem('mode');
 if (currentMode === 'dark') {
   document.body.classList.add('dark-mode');
 }
-else if (currentMode == "rainbow") {
-  document.body.classList.add("rainbow-mode");
-}
 else if (currentMode == "french") {
   document.body.classList.add("french-mode");
 }
-
-/*
-document.addEventListener('DOMContentLoaded', function () {
-  const optionsButton = document.getElementById('options-button');
-  const optionsList = document.querySelector('.options-list');
-  const optionItems = document.querySelectorAll('.option');
-
-  // Show options when clicking the "Hover Me" button
-  optionsButton.addEventListener('click', function () {
-    optionsList.classList.toggle('show-options');
-  });
-
-  // Handle click events for each option
-  optionItems.forEach((option) => {
-    option.addEventListener('click', function () {
-      alert(`Clicked: ${option.textContent}`);
-    });
-  });
-});
-*/
-
-/*
-const toggleRainbowMode = () => {
-  // Get a reference to the body element
-  const body = document.body;
-
-  if (body.classList.contains('dark-mode')) {
-    // If the body element already has the 'dark-mode' class (indicating it's in dark mode),
-    // then switch to light mode by removing the 'dark-mode' class
-    body.classList.remove('dark-mode');
-
-    // Store the user's preference for light mode in localStorage
-    localStorage.setItem('rainbow-mode', 'light');
-  } else {
-    // If the body element does not have the 'dark-mode' class (indicating it's in light mode),
-    // then switch to dark mode by adding the 'dark-mode' class
-    body.classList.add('rainbow-mode');
-
-    // Store the user's preference for dark mode in localStorage
-    localStorage.setItem('rainbow-mode', 'rainbow');
-  }
-};
-
-// Get a reference to the dark mode button by its ID
-const rainbowModeButton = document.getElementById('rainbow-mode');
-
-// Add a click event listener to the dark mode button
-darkModeButton.addEventListener('click', toggleRainbowMode);
-
-// Check the user's dark mode preference stored in localStorage
-const currentMode = localStorage.getItem('rainbow-mode');
-
-// If the user has a preference for dark mode ('dark' stored in localStorage), apply it by adding the 'dark-mode' class to the body element
-if (currentMode === 'rainbow') {
-  document.body.classList.add('rainbow-mode');
-} */
+else if (currentMode == "astro") {
+  document.body.classList.add("astro-mode");
+}
+else if (currentMode == "sac") {
+  document.body.classList.add("sac-mode");
+}

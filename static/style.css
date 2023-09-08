@@ -23,18 +23,6 @@ body.dark-mode {
   --button-color: main-background-color;
 }
 
-/* Rainbow Mode */
-body.rainbow-mode {
-  --body-background-color: #ff0000;
-  --main-background-color: #ff7700;
-  --main-color: #fbff00;
-  --max-body-width: 700px;
-  --border-color: #0be93b;
-  --secondary-color: #490add;
-  --loader-bullet-size: 6px;
-  --button-color: main-background-color;
-}
-
 /* French Mode */
 body.french-mode {
   --body-background-color: #0004ff;
@@ -47,6 +35,29 @@ body.french-mode {
   --button-color: main-background-color;
 }
 
+/* Rainbow Mode */
+body.astro-mode {
+  --body-background-color: #000000;
+  --main-background-color: #1500ff;
+  --main-color: #ffffff;
+  --max-body-width: 700px;
+  --border-color: #f6ff00;
+  --secondary-color: #490add;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+}
+
+/* Rainbow Mode */
+body.sac-mode {
+  --body-background-color: #ffc8f7;
+  --main-background-color: #004702;
+  --main-color: #ffffff;
+  --max-body-width: 700px;
+  --border-color: #ffc8f7;
+  --secondary-color: #ffc8f7;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+}
 
 * {
   box-sizing: border-box;
@@ -133,43 +144,6 @@ body {
   background-color: var(--body-background-color);
   cursor: pointer;
 }
-
-/* option box 
-
-.button-container {
-  position: relative;
-  display: inline-block;
-}
-
-#options-button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-.options-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  list-style: none;
-  padding: 0;
-}
-
-.options-list.show {
-  display: block;
-}
-
-.options-list li {
-  padding: 10px 20px;
-  border-bottom: 1px solid #ccc;
-}
-*/
-
 
 .hidden {
   display: none;
