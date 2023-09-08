@@ -1,3 +1,4 @@
+/* Light Mode */
 :root {
   --body-background-color: #f5f6f8;
   --main-background-color: #ffffff;
@@ -6,11 +7,62 @@
   --border-color: #cccccc;
   --secondary-color: #fff6d3;
   --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+
+}
+
+/* Dark Mode */
+body.dark-mode {
+  --body-background-color: #4500a0;
+  --main-background-color: #000000;
+  --main-color: #ebebeb;
+  --max-body-width: 700px;
+  --border-color: #0be93b;
+  --secondary-color: #490add;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+}
+
+/* French Mode */
+body.french-mode {
+  --body-background-color: #0004ff;
+  --main-background-color: #ff0000;
+  --main-color: #ebebeb;
+  --max-body-width: 700px;
+  --border-color: #ff0000;
+  --secondary-color: #0004ff;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+}
+
+/* Rainbow Mode */
+body.astro-mode {
+  --body-background-color: #000000;
+  --main-background-color: #1500ff;
+  --main-color: #ffffff;
+  --max-body-width: 700px;
+  --border-color: #f6ff00;
+  --secondary-color: #490add;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
+}
+
+/* Rainbow Mode */
+body.sac-mode {
+  --body-background-color: #ffc8f7;
+  --main-background-color: #004702;
+  --main-color: #ffffff;
+  --max-body-width: 700px;
+  --border-color: #ffc8f7;
+  --secondary-color: #ffc8f7;
+  --loader-bullet-size: 6px;
+  --button-color: main-background-color;
 }
 
 * {
   box-sizing: border-box;
 }
+
 
 body {
   background-color: var(--body-background-color);
@@ -27,6 +79,7 @@ body {
   padding: 50px;
   margin: 0 auto;
 }
+
 
 .header {
   text-align: center;
@@ -82,7 +135,8 @@ body {
   border: 1px solid var(--border-color);
   padding: 5px;
   border-radius: 5px;
-  background-color: var(--main-background-color);
+  background-color: var(--button-color);
+  color: var(--main-color)
 }
 
 .button:hover,

@@ -106,5 +106,5 @@ def gpt3completion(question, textpdf):
 text = "Bilal s'est rasé la barbe"
 
 
-def ask_question_to_pdf(question, textpdf=text):
+def ask_question_to_pdf(question, textpdf):
     return gpt3completion(question, textpdf)
