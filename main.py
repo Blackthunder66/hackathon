@@ -1,19 +1,23 @@
+import os
+
 from flask import Flask
 
 from flask import render_template, request
 
+
 from src.utils.ask_question_to_pdf import (
-    split_text,
     ask_question_to_pdf,
-    read_pdf,
     document,
-    chunks,
-    text,
     change_doc,
-    download_file,
+    chemin,
 )
 
+
+UPLOAD_FOLDER = chemin
+ALLOWED_EXTENSIONS = {"txt", "pdf", "png", "jpg", "jpeg", "gif"}
+
 app = Flask(__name__)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
 @app.route("/")
@@ -23,11 +27,13 @@ def hello(name=None):
 
 @app.route("/drop", methods=["PUT"])
 def file():
-    # Contenu du fichier que vous avez déjà en mémoire
+    # app.logger.info("AAAAAAAA")
     contenu_fichier = request.files["drop"]
-    print(contenu_fichier)
-    download_file(contenu_fichier)
-    change_doc(contenu_fichier)
+    contenu_fichier.save(
+        os.path.join(app.config["UPLOAD_FOLDER"], contenu_fichier.filename)
+    )
+    # download_file(contenu_fichier)
+    change_doc(contenu_fichier, name=contenu_fichier.filename)
     return None
 
 

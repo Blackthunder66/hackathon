@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from nltk.tokenize import sent_tokenize
 
 load_dotenv()
-chemin = "C:/Users/tangu/hackathon/src/utils/fichier_dd.txt"
+chemin = "C:/Users/tangu/hackathon/src/utils/"
 chemin_b = "C:/Users/Broni/Downloads/PDF"
 
 
@@ -85,7 +85,7 @@ filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
-
+"""
 def download_file(contenu_fichier):
     # Chemin de destination où vous souhaitez enregistrer le fichier
     chemin_destination = chemin
@@ -105,10 +105,11 @@ def download_file(contenu_fichier):
         print(f"Une erreur s'est produite : {str(e)}")
 
     return None
+"""
 
 
-def change_doc(doc_2):
-    filename_2 = os.path.join(os.path.dirname(__file__), "fichier_dd.txt")
+def change_doc(doc_2, name):
+    filename_2 = os.path.join(os.path.dirname(__file__), name)
     global document
     document = read_pdf(filename_2)
     return None
