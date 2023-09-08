@@ -3,7 +3,7 @@ name: Check_env_file
 on:
   push:
     branches:
-      - TP3  # Vous pouvez modifier la branche cible si nécessaire
+      - main  # Vous pouvez modifier la branche cible si nécessaire
 
 jobs:
   check:
